@@ -1,0 +1,32 @@
+# --- Large or private data: never commit these ---
+
+# Built by cow-prepare-data (several GB)
+dataset/
+# The public WAID dataset; clone it yourself
+WAID/
+# Ultralytics training output
+runs/
+results/
+frames/
+
+# Model weights: publish them as a GitHub Release instead (see README)
+*.pt
+weights/*
+!weights/.gitkeep
+
+# Your own photos (cow photos, drone photos)
+looking_for/*
+!looking_for/.gitkeep
+photos/*
+!photos/.gitkeep
+
+# --- Python / tooling ---
+__pycache__/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store

@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cow-identifier"
+version = "0.1.0"
+description = "Detect cows in drone photos and tell individual cows apart by coat pattern."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ultralytics>=8.0",   # YOLOv8 detector (also pulls in PyTorch)
+    "torchvision",        # ResNet50 fingerprints for re-identification
+    "opencv-python",
+    "numpy",
+    "pillow",
+]
+
+[project.optional-dependencies]
+notebooks = ["jupyter", "matplotlib"]
+dev = ["pytest"]
+
+[project.scripts]
+cow-prepare-data = "cow_identifier.prepare_data:main"
+cow-train = "cow_identifier.train:main"
+cow-detect = "cow_identifier.detect:main"
+cow-reid = "cow_identifier.reid:main"
+cow-extract-frames = "cow_identifier.extract_frames:main"
+
+[tool.setuptools.packages.find]
+include = ["cow_identifier*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
